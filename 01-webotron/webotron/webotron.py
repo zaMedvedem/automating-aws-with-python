@@ -17,6 +17,7 @@ def list_buckets():
 @cli.command('list-bucket-objects')
 @click.argument('bucket')
 def list_bucket_objects(bucket):
+    "List all objects in S3 bucket"
     for obj in s3.Bucket(bucket).objects.all():
         print (obj)
 
