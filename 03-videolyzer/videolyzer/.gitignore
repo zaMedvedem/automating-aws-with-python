@@ -1,4 +1,4 @@
-config.dev.json
+../config.dev.json
 
 # Distribution / packaging
 .Python
