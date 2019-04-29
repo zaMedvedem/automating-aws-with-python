@@ -4,6 +4,7 @@ provider:
   name: aws
   runtime: python3.7
   profile: ${file(../config.${self:provider.stage}.json):videolyzer.profile}
+   # region: us-east-2
 
 functions:
   startProcessingVideo:
