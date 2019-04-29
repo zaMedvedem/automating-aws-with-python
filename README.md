@@ -13,3 +13,11 @@ Webotron currently has the following features:
 - Create and set up bucket
 - Sync directory three to bucket
 - Set AWS profile with --profile=<profileName>
+- Configure Route53 domain
+
+## 02-notifon
+
+Notifon is a project to notify Slack users of changes to your AWS account using CloudWatch events
+
+## Features
+Notifon currently has the following features:
