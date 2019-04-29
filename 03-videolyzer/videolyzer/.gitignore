@@ -1,3 +1,6 @@
+Pipfile.lock
+config.tmlp.json
+
 # Distribution / packaging
 .Python
 env/
