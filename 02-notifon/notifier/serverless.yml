@@ -67,6 +67,7 @@ functions:
               - "aws.autoscaling"
             detail-type:
               - "EC2 Instance Launch Successful"
+              - "EC2 Instance Terminate Successful"
             detail:
               AutoScalingGroupName:
                 - "Notifon Example Group"
@@ -118,3 +119,6 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+plugins:
+  - serverless-python-requirements
