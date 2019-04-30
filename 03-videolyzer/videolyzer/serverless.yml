@@ -2,7 +2,7 @@ service: videolyzer
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.6
   profile: ${file(../config.${self:provider.stage}.json):videolyzer.profile}
 
   iamRoleStatements:
@@ -16,8 +16,8 @@ provider:
       Resource:
         - Fn::Join:
           - ''
-          -  - ${self:custom.videosBucketArn}
-             - '/*'
+          - - ${self:custom.videosBucketArn}
+            - '/*'
     - Effect: "Allow"
       Action:
         - iam:GetRole
@@ -44,7 +44,6 @@ provider:
 
 custom:
   videosTableName: ${file(../config.${self:provider.stage}.json):videolyzer.videos_table}
-
   rekognitionSNSTopicArn:
     Fn::Join:
       - ':'
@@ -54,16 +53,15 @@ custom:
         - Ref: AWS::Region
         - Ref: AWS::AccountId
         - handleLabelDetectionTopic
-
   videosBucketArn:
-    Fn::Join:
-      - ':'
-      - - arn
-        - aws
-        - s3
-        - ''
-        - ''
-        - ${file(../config.${self:provider.stage}.json):videolyzer.videos_bucket}
+      Fn::Join:
+        - ':'
+        - - arn
+          - aws
+          - s3
+          - ''
+          - ''
+          - ${file(../config.${self:provider.stage}.json):videolyzer.videos_bucket}
 
 functions:
   startProcessingVideo:
@@ -74,7 +72,6 @@ functions:
           event: s3:ObjectCreated:*
           rules:
             - suffix: .mp4
-
   handleLabelDetection:
     handler: handler.handle_label_detection
     events:
@@ -97,7 +94,6 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:custom.videosTableName}
-
     RekognitionSNSPublishRole:
       Type: AWS::IAM::Role
       Properties:
