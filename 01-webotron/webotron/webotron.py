@@ -99,7 +99,8 @@ def setup_domain(domain):
 @click.argument('domain')
 def find_cert(domain):
     """Find a certificate for <DOMAIN>."""
-    print(cert_manager.find_matching_cert(domain))
+    # print(cert_manager.find_matching_cert(domain))
+    return cert_manager.find_matching_cert(domain)
 
 
 @cli.command('setup-cdn')
